@@ -31,13 +31,12 @@ csv_day = csv_list[0][4]
 
 current_date = dt.datetime.now()
 current_day = current_date.weekday()
-every_wednesday = [2, 9, 16, 23, 30]
+current_month = current_date.month
 
-for wednesday in every_wednesday:
-    if current_day == wednesday:
-        letter_choice = random.randint(1, 3)
-        with open(file=f"letter_templates/letter_{letter_choice}.txt", mode="r") as file:
-            files_contents = file.read()
+if current_day == csv_day and current_month == csv_month:
+    letter_choice = random.randint(1, 3)
+    with open(file=f"letter_templates/letter_{letter_choice}.txt", mode="r") as file:
+        files_contents = file.read()
 
 finished_file = files_contents.replace("[NAME]", csv_name)
 
